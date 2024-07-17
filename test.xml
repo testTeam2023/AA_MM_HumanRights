@@ -1,0 +1,99 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite">
+    <test name="Regression Test">
+        <classes>
+            <!-- Define the test classes and their methods -->
+
+            <class name="HumanRightsStore.testCases.systemSettingsTest.SystemSettingsTest">
+            </class>
+            <class name="HumanRightsStore.testCases.systemSettingsTest.ItemsTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.ReceiptNotifyTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.ExaminationTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.ReceiptStmtTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.ReceiptMemoTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.SpendingorderRequestTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.ReturnsDepartmentRequestTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.SpendingOrderTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.ReturnsDepartmentTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.ReturnSpendingOrderTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.ItemsTransfeerTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.InventoryTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.BalanceAdjustmentTest">
+            </class>
+            <class name="HumanRightsStore.testCases.mainOperationsTest.ClosingFinYearTest">
+            </class>
+            <class name="HumanRightsStore.testCases.procurementTest.PurOrderTest">
+            </class>
+            <class name="HumanRightsStore.testCases.procurementTest.PurQuoteRequestTest">
+            </class>
+            <class name="HumanRightsStore.testCases.procurementTest.PurQuoteTest">
+            </class>
+            <class name="HumanRightsStore.testCases.procurementTest.PurQuoteComparisonTest">
+            </class>
+            <class name="HumanRightsStore.testCases.procurementTest.ContractTest">
+            </class>
+            <class name="HumanRightsStore.testCases.procurementTest.ClassifyItemTest">
+            </class>
+            <class name="HumanRightsStore.testCases.procurementTest.PurOrderSummaryTest">
+            </class>
+            <class name="HumanRightsStore.testCases.procurementTest.ContractQueryTest">
+            </class>
+            <class name="HumanRightsStore.testCases.inventoryMonitorsTest.ReceiptStmtMonitoringTest">
+            </class>
+            <class name="HumanRightsStore.testCases.inventoryMonitorsTest.ReceiptMemoMonitoringTest">
+            </class>
+            <class name="HumanRightsStore.testCases.inventoryMonitorsTest.SpendingOrderMonitoringTest">
+            </class>
+            <class name="HumanRightsStore.testCases.inventoryMonitorsTest.InventoryMonitoringTest">
+            </class>
+            <class name="HumanRightsStore.testCases.inventoryMonitorsTest.TransformTest">
+            </class>
+            <class name="HumanRightsStore.testCases.inventoryMonitorsTest.InventoryDepartmentTest">
+            </class>
+            <class name="HumanRightsStore.testCases.inventoryMonitorsTest.SolfaClassificationTest">
+            </class>
+            <class name="HumanRightsStore.testCases.inventoryMonitorsTest.ItemInfoTest">
+            </class>
+            <class name="HumanRightsStore.testCases.assetsTest.AppAssetDepreciationTest">
+            </class>
+            <class name="HumanRightsStore.testCases.assetsTest.AppAssetMaintenanceTest">
+            </class>
+            <class name="HumanRightsStore.testCases.assetsTest.AppAssetDisposalTest">
+            </class>
+            <class name="HumanRightsStore.testCases.assetsTest.AppAssetDaftarTest">
+            </class>
+            <class name="HumanRightsStore.testCases.assetsTest.AppAssetsTest">
+            </class>
+            <class name="HumanRightsStore.testCases.assetsTest.AppAssetGroupsTest">
+            </class>
+            <class name="HumanRightsStore.testCases.assetsTest.AppAssetTypesTest">
+            </class>
+            <class name="HumanRightsStore.testCases.reportsTest.procurementTest.ProcurementReportsTest">
+            </class>
+            <class name="HumanRightsStore.testCases.reportsTest.InventoryMonitoringTest.InventoryMonitoringReportsTest">
+            </class>
+            <class name="HumanRightsStore.testCases.reportsTest.SpecialReportTest.SpecialReportsTest">
+            </class>
+            <class name="HumanRightsStore.testCases.reportsTest.mainOperationsReportTest.MainOperationReportTest">
+            </class>
+
+
+
+
+
+            <!-- Add more test classes as needed -->
+        </classes>
+    </test>
+</suite>
