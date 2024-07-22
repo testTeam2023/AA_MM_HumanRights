@@ -40,10 +40,9 @@ public class ReceiptMemo {
             try {
                 driver.get(ConfigUtils.getInstance().getReceiptMemoPage());
                 Thread.sleep(2500);
-                if(isElementDisplay(pageAssert)) {
+                if (isElementDisplay(pageAssert)) {
                     return this;
-                }
-                else {
+                } else {
                     throw new RuntimeException("The specified element is not displayed");
                 }
             } catch (Exception e) {
@@ -53,14 +52,15 @@ public class ReceiptMemo {
         }
         throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
     }
-    private boolean isElementDisplay(By locator){
+
+    private boolean isElementDisplay(By locator) {
         try {
             return waitForVisibilityElement(locator).isDisplayed();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
+
     private final By pageAssert = By.xpath("//*[@id=\"content\"]/div[1]/div/div/h1");
 
     // Select supplier from a list
@@ -68,7 +68,8 @@ public class ReceiptMemo {
     private final By suppliersParent = By.xpath("//ul[@id=\"select2-SuppID-results\"]");
     private final By suppliersChild = By.tagName("li");
     private final By unit = By.xpath("//*[@id=\"UnitID\"]");
-    public ReceiptMemo enterUnit() throws InterruptedException{
+
+    public ReceiptMemo enterUnit() throws InterruptedException {
         int maxAttempt = 3;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -76,8 +77,7 @@ public class ReceiptMemo {
                 select.selectByValue("28");
                 Thread.sleep(2000);
                 return this;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Retrying  enterUnit");
             }
         }
@@ -105,7 +105,7 @@ public class ReceiptMemo {
                 navigateToReceiptMemoPage();
             }
         }
-        throw new RuntimeException("failed selecting supplier after "+maxAttempt) ;
+        throw new RuntimeException("failed selecting supplier after " + maxAttempt);
 
     }
 
@@ -130,7 +130,7 @@ public class ReceiptMemo {
                 System.out.println("Retrying  selecting store");
             }
         }
-        throw new RuntimeException("failed selecting store after " +maxAttempt);
+        throw new RuntimeException("failed selecting store after " + maxAttempt);
 
     }
 
@@ -141,8 +141,7 @@ public class ReceiptMemo {
     private final By receiverSearchResultChild = By.tagName("a");
 
 
-
-    public ReceiptMemo selectEmployeeName() throws InterruptedException{
+    public ReceiptMemo selectEmployeeName() throws InterruptedException {
 
         WebElement EmployeeSearchBtn = waitForClickableElement(receiverSearch);
         EmployeeSearchBtn.click();
@@ -207,11 +206,17 @@ public class ReceiptMemo {
         WebElement itemAdded = waitForClickableElement(addBtn);
         itemAdded.click();
         Thread.sleep(2000);
-        JavascriptExecutor js = (JavascriptExecutor) driver ;
-        js.executeScript("window.scrollBy(0,400);") ;
+
 
         return this;
     }
+
+    public ReceiptMemo scrollDownC() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,400);");
+        return this ;
+    }
+
 
     public ReceiptMemo clickOnSaveBtn() throws InterruptedException{
 
@@ -219,17 +224,20 @@ public class ReceiptMemo {
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
                 WebElement saveButton = waitForClickableElement(saveBtn);
-                Actions actions = new Actions(driver);
-                actions.moveToElement(saveButton).click().build().perform();
+                saveButton.click();
+                //Actions actions = new Actions(driver);
+               // actions.moveToElement(saveButton).click().build().perform();
                 Thread.sleep(1500);
+
                 WebElement okButton = waitForClickableElement(okBtn);
-                Actions actions1 = new Actions(driver);
-                actions1.moveToElement(okButton).click().build().perform();
+                okButton.click();
+                //Actions actions1 = new Actions(driver);
+                //actions1.moveToElement(okButton).click().build().perform();
                 Thread.sleep(1500);
                 return this;
             }
             catch (Exception e){
-                System.out.println("Retrying click on save btn ");
+                System.out.println("Retrying click on save btn " + e.getMessage());
                 handleUnexpectedAlert();
             }
         }

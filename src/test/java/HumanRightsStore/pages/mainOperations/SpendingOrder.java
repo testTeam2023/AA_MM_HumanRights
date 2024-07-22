@@ -374,7 +374,7 @@ public class SpendingOrder {
 
     // Edit function
 
-    private final By  editBtnParent = By.xpath("//table[@id=\"tblDataTableClient\"]/tbody/tr[1]/td[11]");
+    private final By  editBtnParent = By.xpath("/html/body/div[6]/div/div[2]/div/div[1]/form/div[2]/table/tbody/tr[1]/td[11]");
     private final By  editBtnChild = By.tagName("a");
     private final By  editBtn = By.xpath("//*[@id=\"btnSave\" and contains(@value,\"تعديل\")]");
     private final By deleteSuccessMessage = By.xpath("//*[@id=\"div-success-modal\"]//div[contains(text(),\"تم الحذف بنجاح\")]");
@@ -384,7 +384,7 @@ public class SpendingOrder {
         int maxRetry = 5;
         for (int retry = 0; retry < maxRetry; retry++){
             try {
-                WebElement parent = waitForVisibilityElement(editBtnParent);
+                WebElement parent = waitForClickableElement(editBtnParent);
 
                 List<WebElement> child = parent.findElements(editBtnChild);
                 WebElement elemnt =  wait.until(ExpectedConditions.elementToBeClickable(child.get(0)));

@@ -24,10 +24,11 @@ public class ReceiptMemoTest extends TestBase {
             receiptMemo
                     .navigateToReceiptMemoPage()
                     .selectSupplier()
-                   // .selectStore(storeName)
+                    .selectStore(storeName)
                     .selectEmployeeName()
                     .scrollDown()
                     .addItems(itemNum,qty,price)
+                    .scrollDownC()
                     .clickOnSaveBtn()
                     .clickOnFixedBtn();
             softAssert.assertTrue(receiptMemo.fixedBtnDisable());
