@@ -102,6 +102,7 @@ public class BalanceAdjustment {
     private final By itemNumber= By.xpath("//*[@id=\"Dtl_ItemID\"]");
     private final By adjustmentQty= By.xpath("//*[@id=\"Dtl_AdjustmentQuantity\"]");
     private final By adjustmentType= By.xpath("//*[@id=\"DDLAdjustmentTypeID\"]");
+    private final By unit = By.xpath("//*[@id=\"Dtl_UnitID\"]");
     private final By addBtn = By.xpath("//*[@id=\"btnAddNewItem\"]");
     private final By saveBtn = By.xpath("//*[@id=\"btnSave\" and contains(@value,\"حفظ\")]");
     private final By okBtn = By.xpath("//button[@id=\"btn-ok-modal\"]");
@@ -149,6 +150,24 @@ private final By selectAssert=By.xpath("//select[@name='Dtl_UnitID']/option[@val
             }
         }
         throw new RuntimeException("failed to  enter AdjustmentQty ");
+    }
+
+
+
+    public BalanceAdjustment enterUnit() throws InterruptedException{
+        int maxAttempt = 3;
+        for (int attempt = 0; attempt < maxAttempt; attempt++) {
+            try {
+                Select select = new Select(waitForClickableElement(unit));
+                select.selectByValue("28");
+                Thread.sleep(2000);
+                return this;
+            }
+            catch (Exception e) {
+                System.out.println("Retrying  enterUnit");
+            }
+        }
+        throw new RuntimeException("failed to enterUnit ");
     }
 
         public BalanceAdjustment enterAdjustmentType(String adjstmntType) throws InterruptedException{

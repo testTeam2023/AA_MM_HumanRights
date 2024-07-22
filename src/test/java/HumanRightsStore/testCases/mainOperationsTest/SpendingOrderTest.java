@@ -17,31 +17,36 @@ public class SpendingOrderTest extends TestBase {
        } ;
    }
     @Test(dataProvider = "data" , priority = 1)
-    public void createSpendingOrderFlow(String storeName,String storeKeeper, String department , String departmenManager , String receiver , String itemNum , String qty) throws InterruptedException{
+    public void createSpendingOrderFlow(String storeName,String storeKeeper, String department , String departmenManager , String receiver , String itemNum , String qty) throws InterruptedException {
 // عاوز اعمل e2e  من الاصناف لها رقم تسلسلي ومحضر ب رقم تسلسلي ثم عمل امر صرف ثم عمل رجيع للصنف ثم صرف صنف رجيع
-       spendingOrder = new SpendingOrder(driver);
-       SoftAssert softAssert = new SoftAssert();
-       spendingOrder
-               .navigateToSpendingOrderPage()
-               .selectStore(storeName)
-               .scrollDown()
-               .selectDepartment(department)
-               .selectDepartmentManager(departmenManager)
-               .selectReceiver(receiver)
-               .scrollDown()
-               .addItem(itemNum,qty)
-               .clickOnSaveBtn()
-               .clickOnFixedBtn();
+        spendingOrder = new SpendingOrder(driver);
+        SoftAssert softAssert = new SoftAssert();
+        spendingOrder
+                .navigateToSpendingOrderPage()
+                .selectStore(storeName)
+                .scrollDown()
+                .selectDepartment(department)
+                .selectDepartmentManager(departmenManager)
+                .selectReceiver(receiver)
+                .scrollDown()
+                .addItem(itemNum, qty)
+                .clickOnSaveBtn()
+                .clickOnFixedBtn();
         softAssert.assertTrue(spendingOrder.getSuccessMessage());
         softAssert.assertTrue(spendingOrder.fixedBtnDisable());
-  //search
+        //search
         spendingOrder
                 .navigateToSpendingOrderPage()
                 .clickOnSearchTab()
                 .scrollDownForSearch()
                 .clickOnSearchBtn();
+    }
 //Edit
-        spendingOrder
+@Test(priority = 2 )
+public void spendingOrderEdit() throws InterruptedException{
+    spendingOrder = new SpendingOrder(driver);
+    SoftAssert softAssert = new SoftAssert();
+    spendingOrder
                 .navigateToSpendingOrderPage()
                 .clickOnSearchTab()
                 .scrollDownForSearch()

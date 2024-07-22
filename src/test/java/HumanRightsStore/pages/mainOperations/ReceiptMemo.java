@@ -5,6 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 import java.util.List;
@@ -66,6 +67,22 @@ public class ReceiptMemo {
     private final By selectSuppliers = By.xpath("//span[@id=\"select2-SuppID-container\"]");
     private final By suppliersParent = By.xpath("//ul[@id=\"select2-SuppID-results\"]");
     private final By suppliersChild = By.tagName("li");
+    private final By unit = By.xpath("//*[@id=\"UnitID\"]");
+    public ReceiptMemo enterUnit() throws InterruptedException{
+        int maxAttempt = 3;
+        for (int attempt = 0; attempt < maxAttempt; attempt++) {
+            try {
+                Select select = new Select(waitForClickableElement(unit));
+                select.selectByValue("28");
+                Thread.sleep(2000);
+                return this;
+            }
+            catch (Exception e) {
+                System.out.println("Retrying  enterUnit");
+            }
+        }
+        throw new RuntimeException("failed to enterUnit ");
+    }
 
     public ReceiptMemo selectSupplier() {
         int maxAttempt = 5;
@@ -79,6 +96,8 @@ public class ReceiptMemo {
                 List<WebElement> child = results.findElements(suppliersChild);
                 child.get(1).click();
                 Thread.sleep(2000);
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                js.executeScript("window.scrollBy(0,30);");
 
                 return this;
             } catch (Exception e) {
@@ -154,7 +173,7 @@ public class ReceiptMemo {
     private final By itemQty = By.xpath("//input[@id=\"Itemquantity\"]");
     private final By itemPrice = By.xpath("//input[@id=\"Itemprice\"]");
     private final By addBtn = By.xpath("//input[@id=\"btnAddNewItem\"]");
-    private final By saveBtn = By.xpath("//*[@id=\"btnSave\" and contains(@value,\"حفظ\")]");
+    private final By saveBtn = By.xpath("//*[@id=\"btnSave\"]");
     private final By okBtn = By.xpath("//button[@id=\"btn-ok-modal\"]");
     private final By successMessage = By.xpath("//div[@id=\"div-success-modal\"]//div[contains(text(),\"تم الحفظ بنجاح\")]");
     private final By successMessageOfNotFixed = By.xpath("//div[@id=\"div-success-modal\"]//div[contains(text(),\"تم تثبيت الإلغاء\")]");
@@ -181,11 +200,15 @@ public class ReceiptMemo {
         priceField.sendKeys(price);
         Thread.sleep(1000);
 
+        Select select = new Select(waitForClickableElement(unit));
+        select.selectByValue("28");
+        Thread.sleep(2000);
+
         WebElement itemAdded = waitForClickableElement(addBtn);
         itemAdded.click();
         Thread.sleep(2000);
         JavascriptExecutor js = (JavascriptExecutor) driver ;
-        js.executeScript("window.scrollBy(0,350);") ;
+        js.executeScript("window.scrollBy(0,400);") ;
 
         return this;
     }
@@ -373,8 +396,8 @@ public class ReceiptMemo {
 
     }
     public ReceiptMemo scrollToTheEnd(){
-        Actions actions = new Actions(driver);
-        actions.scrollToElement(driver.findElement(notFixed));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,1250);");
         return this ;
     }
 
@@ -406,10 +429,9 @@ public class ReceiptMemo {
                     wait.until(ExpectedConditions.alertIsPresent());
                     Alert alert = driver.switchTo().alert();
                     alert.accept();
-
-                    WebElement ok = waitForClickableElement(okBtn);
-                    ok.click();
-                    System.out.println(getDeleteSuccessMessage());
+                    //WebElement ok = waitForClickableElement(okBtn);
+                   // ok.click();
+                  //  System.out.println(getDeleteSuccessMessage());
 
                 } catch (Exception e) {
                     System.out.println("لا يمكن الحذف أو التعديل بعد التثبيت");

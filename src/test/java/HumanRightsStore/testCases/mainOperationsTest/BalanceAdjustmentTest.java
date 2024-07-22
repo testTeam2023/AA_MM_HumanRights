@@ -30,6 +30,7 @@ public class BalanceAdjustmentTest extends TestBase {
                 .scrollDownForAddItem()
                 .enterItemNum(itemNumbers)
                 .enterAdjustmentQty(adjustmntQty)
+                .enterUnit()
                 .enterAdjustmentType(adjstmntType)
                 .clickOnAddBtn()
                 .scrollDownForsaveBtn()
