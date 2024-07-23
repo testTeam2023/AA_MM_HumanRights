@@ -14,13 +14,13 @@
             </class>
             <class name="HumanRightsStore.testCases.mainOperationsTest.ReceiptStmtTest">
             </class>
-            <class name="HumanRightsStore.testCases.mainOperationsTest.ReceiptMemoTest">
+            <class name="HumanRightsStore.testCases.mainOperationsTest.ReceiptMemoPageTest">
             </class>
             <class name="HumanRightsStore.testCases.mainOperationsTest.SpendingorderRequestTest">
             </class>
             <class name="HumanRightsStore.testCases.mainOperationsTest.ReturnsDepartmentRequestTest">
             </class>
-            <class name="HumanRightsStore.testCases.mainOperationsTest.SpendingOrderTest">
+            <class name="HumanRightsStore.testCases.mainOperationsTest.SpendingOrderPageTest">
             </class>
             <class name="HumanRightsStore.testCases.mainOperationsTest.ReturnsDepartmentTest">
             </class>

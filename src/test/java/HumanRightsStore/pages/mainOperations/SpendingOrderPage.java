@@ -8,20 +8,18 @@ import org.openqa.selenium.support.ui.FluentWait;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.NoSuchElementException;
 
-public class SpendingOrder {
-    private final WebDriver driver ;
-    private final FluentWait<WebDriver> wait;
+public class SpendingOrderPage {
+    private WebDriver driver ;
+    private final FluentWait<WebDriver>wait ;
 
-    public SpendingOrder (WebDriver driver){
-        this.driver=driver;
-        this.wait=new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(60))
+    public SpendingOrderPage(WebDriver driver){
+        this.driver = driver;
+        this.wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(NoSuchElementException.class);
+                .ignoring(NoSuchElementException.class) ;
     }
-
     public WebElement waitForClickableElement(By locator) {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
@@ -33,7 +31,7 @@ public class SpendingOrder {
     public WebElement waitForPresenceElement(By locator) {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
-    public SpendingOrder navigateToSpendingOrderPage() {
+    public SpendingOrderPage navigateToSpendingOrderPage() {
         int maxAttempt = 3;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -74,7 +72,7 @@ public class SpendingOrder {
     private final By searchDepartmentMangerField = By.xpath("//*[@class=\"select2-search select2-search--dropdown\"]//input");
     private final By selectReceiverName=By.xpath("//*[@id=\"select2-EmployeeID_Recieved-container\"]");
     private final By searchReceiverField = By.xpath("//*[@class=\"select2-search select2-search--dropdown\"]//input");
-    public SpendingOrder selectStore(String storeName) throws InterruptedException {
+    public SpendingOrderPage selectStore(String storeName) throws InterruptedException {
         int maxAttempt = 5;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -93,7 +91,7 @@ public class SpendingOrder {
         throw new RuntimeException("failed selecting Store after " +maxAttempt);
 
     }
-    public SpendingOrder selectStoreKeeper(String storeKeeper) throws InterruptedException {
+    public SpendingOrderPage selectStoreKeeper(String storeKeeper) throws InterruptedException {
         int maxAttempt = 5;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -111,7 +109,7 @@ public class SpendingOrder {
         throw new RuntimeException("failed selecting StoreKeeper after " +maxAttempt);
 
     }
-    public SpendingOrder selectDepartment(String DepartmentName) throws InterruptedException {
+    public SpendingOrderPage selectDepartment(String DepartmentName) throws InterruptedException {
         int maxAttempt = 5;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -130,7 +128,7 @@ public class SpendingOrder {
 
     }
 
-    public SpendingOrder selectDepartmentManager(String DepartmentManagerName) throws InterruptedException {
+    public SpendingOrderPage selectDepartmentManager(String DepartmentManagerName) throws InterruptedException {
         int maxAttempt = 5;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -147,7 +145,7 @@ public class SpendingOrder {
         }
         throw new RuntimeException("failed selecting Department manager after " +maxAttempt);
     }
-    public SpendingOrder selectReceiver(String ReceiverName) throws InterruptedException {
+    public SpendingOrderPage selectReceiver(String ReceiverName) throws InterruptedException {
         int maxAttempt = 5;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -165,14 +163,14 @@ public class SpendingOrder {
         throw new RuntimeException("failed selecting receiver name after " +maxAttempt);
     }
 
-    public SpendingOrder scrollDown(){
+    public SpendingOrderPage scrollDown(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,400);");
+        js.executeScript("window.scrollBy(0,900);");
         return this ;
     }
-    public SpendingOrder scrollDownForSearch()throws InterruptedException{
+    public SpendingOrderPage scrollDownForSearch()throws InterruptedException{
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,350);");
+        js.executeScript("window.scrollBy(0,200);");
         return this ;
     }
 
@@ -188,7 +186,7 @@ public class SpendingOrder {
     private final By fixed = By.xpath("//input[@id=\"btnFixing\"]");
     private final By notFixed = By.xpath("//input[@id=\"btnCancelFixed\"]");
 
-    public SpendingOrder addItem(String itemNumbers ,String itemqtys) throws InterruptedException{
+    public SpendingOrderPage addItem(String itemNumbers ,String itemqtys) throws InterruptedException{
         int maxAttempt = 3;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -218,7 +216,7 @@ public class SpendingOrder {
     }
 
 
-    public SpendingOrder clickOnSaveBtn() throws InterruptedException{
+    public SpendingOrderPage clickOnSaveBtn() throws InterruptedException{
 
         int maxAttempt = 5;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
@@ -255,7 +253,7 @@ public class SpendingOrder {
         return wait.until(ExpectedConditions.presenceOfElementLocated(successMessage)).isDisplayed();
     }
 
-    public SpendingOrder clickOnFixedBtn()throws InterruptedException {
+    public SpendingOrderPage clickOnFixedBtn()throws InterruptedException {
 
         WebElement fixedButton = waitForClickableElement(fixed);
         fixedButton.click();
@@ -266,7 +264,7 @@ public class SpendingOrder {
 
         return this ;
     }
-    public SpendingOrder clickOnNotFixedBtn() {
+    public SpendingOrderPage clickOnNotFixedBtn() {
         try {
 
             WebElement notFixedButton = waitForClickableElement(notFixed);
@@ -304,7 +302,7 @@ public class SpendingOrder {
     private final By  searchBtn = By.xpath("//input[@value=\"بـحـث\"]");
     private final By  searchData = By.xpath("//table[@id=\"tblDataTableClient\"]/tbody");
 
-    public SpendingOrder clickOnSearchTab()throws InterruptedException{
+    public SpendingOrderPage clickOnSearchTab()throws InterruptedException{
         int maxAttempt = 3 ;
         for (int attempt=0; attempt<maxAttempt; attempt++) {
             try {
@@ -327,16 +325,16 @@ public class SpendingOrder {
         throw new RuntimeException("Failed to click on search tab after " + maxAttempt + " attempts");
 
     }
-    public SpendingOrder clickOnSearchBtn() throws InterruptedException {
+    public SpendingOrderPage clickOnSearchBtn() throws InterruptedException {
         int maxAttempts = 10;
         for (int attempt = 0; attempt < maxAttempts; attempt++) {
             try {
                 WebElement search= wait.until(ExpectedConditions.elementToBeClickable(searchBtn));
                 Thread.sleep(1500);
                 //Actions actions = new Actions(driver);
-               //  actions.moveToElement(search).click().build().perform();
+                //  actions.moveToElement(search).click().build().perform();
                 JavascriptExecutor executor = (JavascriptExecutor) driver;
-               executor.executeScript("arguments[0].scrollIntoView(true);", search);
+                executor.executeScript("arguments[0].scrollIntoView(true);", search);
                 search.click();
                 Thread.sleep(3500);
                 return this;
@@ -379,7 +377,7 @@ public class SpendingOrder {
     private final By  editBtn = By.xpath("//*[@id=\"btnSave\" and contains(@value,\"تعديل\")]");
     private final By deleteSuccessMessage = By.xpath("//*[@id=\"div-success-modal\"]//div[contains(text(),\"تم الحذف بنجاح\")]");
 
-    public SpendingOrder clickOnEditBtn() throws InterruptedException{
+    public SpendingOrderPage clickOnEditBtn() throws InterruptedException{
 
         int maxRetry = 5;
         for (int retry = 0; retry < maxRetry; retry++){
@@ -406,13 +404,13 @@ public class SpendingOrder {
     }
 
 
-    public SpendingOrder scrollToTheEnd(){
+    public SpendingOrderPage scrollToTheEnd(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0, 850);");
         return this ;
     }
 
-    public SpendingOrder clickOnEditSaveBtn() throws InterruptedException{
+    public SpendingOrderPage clickOnEditSaveBtn() throws InterruptedException{
         WebElement edit = waitForClickableElement(editBtn);
         Actions actions =new Actions(driver);
         actions.moveToElement(edit).click().build().perform();
@@ -426,7 +424,7 @@ public class SpendingOrder {
 
     }
 
-    public SpendingOrder clickOnDeleteBtn() throws InterruptedException {
+    public SpendingOrderPage clickOnDeleteBtn() throws InterruptedException {
 
         int maxRetry = 5;
         for (int retry = 0; retry < maxRetry; retry++) {
@@ -435,8 +433,8 @@ public class SpendingOrder {
                 WebElement parent = waitForVisibilityElement(editBtnParent);
 
                 List<WebElement> child = parent.findElements(editBtnChild);
-               WebElement elemnt =  wait.until(ExpectedConditions.elementToBeClickable(child.get(1)));
-               elemnt.click();
+                WebElement elemnt =  wait.until(ExpectedConditions.elementToBeClickable(child.get(1)));
+                elemnt.click();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
@@ -461,28 +459,6 @@ public class SpendingOrder {
 
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

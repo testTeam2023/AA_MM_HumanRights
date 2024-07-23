@@ -10,16 +10,18 @@ import org.openqa.selenium.support.ui.Select;
 import java.time.Duration;
 import java.util.List;
 
-public class ReceiptMemo {
-    private final WebDriver driver;
-    private final FluentWait<WebDriver> wait;
+public class ReceiptMemoPage {
 
-    public ReceiptMemo(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new FluentWait<>(driver)
+    private WebDriver driver ;
+    private final FluentWait<WebDriver>wait;
+
+    public ReceiptMemoPage(WebDriver driver){
+        this.driver=driver;
+        this.wait=new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(2))
-                .ignoring(NoSuchElementException.class);
+                .ignoring(NoSuchElementException.class) ;
+
     }
 
     public WebElement waitForClickableElement(By locator) {
@@ -34,7 +36,7 @@ public class ReceiptMemo {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
-    public ReceiptMemo navigateToReceiptMemoPage() {
+    public ReceiptMemoPage navigateToReceiptMemoPage() {
         int maxAttempt = 3;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -69,7 +71,7 @@ public class ReceiptMemo {
     private final By suppliersChild = By.tagName("li");
     private final By unit = By.xpath("//*[@id=\"UnitID\"]");
 
-    public ReceiptMemo enterUnit() throws InterruptedException {
+    public ReceiptMemoPage enterUnit() throws InterruptedException {
         int maxAttempt = 3;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -84,7 +86,7 @@ public class ReceiptMemo {
         throw new RuntimeException("failed to enterUnit ");
     }
 
-    public ReceiptMemo selectSupplier() {
+    public ReceiptMemoPage selectSupplier() {
         int maxAttempt = 5;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -113,7 +115,7 @@ public class ReceiptMemo {
     private final By selectStore = By.xpath("//span[@id=\"select2-StoreID-container\"]");
     private final By searchField = By.xpath("//*[@class=\"select2-search select2-search--dropdown\"]//input");
 
-    public ReceiptMemo selectStore(String storeName) throws InterruptedException {
+    public ReceiptMemoPage selectStore(String storeName) throws InterruptedException {
         int maxAttempt = 5;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -141,7 +143,7 @@ public class ReceiptMemo {
     private final By receiverSearchResultChild = By.tagName("a");
 
 
-    public ReceiptMemo selectEmployeeName() throws InterruptedException {
+    public ReceiptMemoPage selectEmployeeName() throws InterruptedException {
 
         WebElement EmployeeSearchBtn = waitForClickableElement(receiverSearch);
         EmployeeSearchBtn.click();
@@ -159,10 +161,10 @@ public class ReceiptMemo {
 
     }
 
-    public ReceiptMemo scrollDown() {
+    public ReceiptMemoPage scrollDown() {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,900);");
+        js.executeScript("window.scrollBy(0,1000);");
 
         return this;
     }
@@ -180,7 +182,7 @@ public class ReceiptMemo {
     private final By notFixed = By.xpath("//input[@id=\"btnCancelFixed\"]");
     private final By itemNoBtns = By.xpath("/html/body/div[6]/div/div[2]/div/div[2]/div[2]/div[2]/div[1]/form/div[1]/div/label[4]");
 
-    public ReceiptMemo addItems(String itemNum, String qty, String price) throws InterruptedException {
+    public ReceiptMemoPage addItems(String itemNum, String qty, String price) throws InterruptedException {
 
         WebElement itemNoBtn = waitForClickableElement(itemNoBtns);
         itemNoBtn.click();
@@ -211,14 +213,14 @@ public class ReceiptMemo {
         return this;
     }
 
-    public ReceiptMemo scrollDownC() {
+    public ReceiptMemoPage scrollDownC() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,400);");
         return this ;
     }
 
 
-    public ReceiptMemo clickOnSaveBtn() throws InterruptedException{
+    public ReceiptMemoPage clickOnSaveBtn() throws InterruptedException{
 
         int maxAttempt = 5;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
@@ -226,7 +228,7 @@ public class ReceiptMemo {
                 WebElement saveButton = waitForClickableElement(saveBtn);
                 saveButton.click();
                 //Actions actions = new Actions(driver);
-               // actions.moveToElement(saveButton).click().build().perform();
+                // actions.moveToElement(saveButton).click().build().perform();
                 Thread.sleep(1500);
 
                 WebElement okButton = waitForClickableElement(okBtn);
@@ -258,7 +260,7 @@ public class ReceiptMemo {
         return wait.until(ExpectedConditions.presenceOfElementLocated(successMessage)).isDisplayed();
     }
 
-    public ReceiptMemo clickOnFixedBtn() throws InterruptedException{
+    public ReceiptMemoPage clickOnFixedBtn() throws InterruptedException{
 
         WebElement fixedButton = waitForClickableElement(fixed);
         fixedButton.click();
@@ -271,7 +273,7 @@ public class ReceiptMemo {
 
         return this ;
     }
-    public ReceiptMemo clickOnNotFixedBtn() {
+    public ReceiptMemoPage clickOnNotFixedBtn() {
         try {
 
             WebElement notFixedButton = waitForClickableElement(notFixed);
@@ -310,7 +312,7 @@ public class ReceiptMemo {
     private final By  searchBtn = By.xpath("//input[@class=\" btn-info btn-3d btn \" and contains(@value,\"بـحـث\")]");
     private final By  searchData = By.xpath("//table[@id=\"tblDataTableClient\"]/tbody");
 
-    public ReceiptMemo clickOnSearchTab()throws InterruptedException{
+    public ReceiptMemoPage clickOnSearchTab()throws InterruptedException{
         int maxAttempt = 3 ;
         for (int attempt=0; attempt<maxAttempt; attempt++) {
             try {
@@ -333,7 +335,7 @@ public class ReceiptMemo {
         throw new RuntimeException("Failed to click on search tab after " + maxAttempt + " attempts");
 
     }
-    public ReceiptMemo clickOnSearchBtn() throws InterruptedException{
+    public ReceiptMemoPage clickOnSearchBtn() throws InterruptedException{
         int maxAttempt = 5;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
@@ -381,7 +383,7 @@ public class ReceiptMemo {
     private final By  editBtn = By.xpath("//*[@id=\"btnSave\" and contains(@value,\"تعديل\")]");
     private final By deleteSuccessMessage = By.xpath("//*[@id=\"div-success-modal\"]//div[contains(text(),\"تم الحذف بنجاح\")]");
 
-    public ReceiptMemo clickOnEditBtn() throws InterruptedException{
+    public ReceiptMemoPage clickOnEditBtn() throws InterruptedException{
         int maxRetry = 5;
         for (int retry = 0; retry < maxRetry; retry++){
             try {
@@ -403,13 +405,13 @@ public class ReceiptMemo {
         throw new RuntimeException("Failed to click on edit btn after all attempt");
 
     }
-    public ReceiptMemo scrollToTheEnd(){
+    public ReceiptMemoPage scrollToTheEnd(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,1250);");
         return this ;
     }
 
-    public ReceiptMemo clickOnEditSaveBtn() throws InterruptedException{
+    public ReceiptMemoPage clickOnEditSaveBtn() throws InterruptedException{
         WebElement edit = waitForClickableElement(editBtn);
         Actions actions =new Actions(driver);
         actions.moveToElement(edit).click().build().perform();
@@ -423,7 +425,7 @@ public class ReceiptMemo {
 
     }
 
-    public ReceiptMemo clickOnDeleteBtn() throws InterruptedException{
+    public ReceiptMemoPage clickOnDeleteBtn() throws InterruptedException{
 
         int maxRetry = 5;
         for (int retry = 0; retry < maxRetry; retry++){
@@ -438,8 +440,8 @@ public class ReceiptMemo {
                     Alert alert = driver.switchTo().alert();
                     alert.accept();
                     //WebElement ok = waitForClickableElement(okBtn);
-                   // ok.click();
-                  //  System.out.println(getDeleteSuccessMessage());
+                    // ok.click();
+                    //  System.out.println(getDeleteSuccessMessage());
 
                 } catch (Exception e) {
                     System.out.println("لا يمكن الحذف أو التعديل بعد التثبيت");
@@ -461,8 +463,4 @@ public class ReceiptMemo {
 
 
     }
-
-
-
-
 }
