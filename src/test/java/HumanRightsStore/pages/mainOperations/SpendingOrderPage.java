@@ -296,7 +296,7 @@ public class SpendingOrderPage {
     }
     // Search Function
     private final By  searchTab = By.xpath("//a[@id=\"AnchorfirstTab\"]");
-    private final By  searchBtn = By.xpath("//*[@id=\"FormSearch\"]/div[1]/div[9]/input");
+    private final By  searchBtn = By.cssSelector("input[type='submit'][value='بـحـث']");
     private final By  searchData = By.xpath("//table[@id=\"tblDataTableClient\"]/tbody");
 
     public SpendingOrderPage clickOnSearchTab()throws InterruptedException{
@@ -326,26 +326,31 @@ public class SpendingOrderPage {
         int maxAttempts = 10;
         for (int attempt = 0; attempt < maxAttempts; attempt++) {
             try {
-                WebElement search= wait.until(ExpectedConditions.elementToBeClickable(searchBtn));
-                Thread.sleep(1500);
-                //Actions actions = new Actions(driver);
-                //  actions.moveToElement(search).click().build().perform();
+                // Locate the element inside the loop to avoid stale element references
+                WebElement search = wait.until(ExpectedConditions.elementToBeClickable(searchBtn));
+                // Scroll into view using JavascriptExecutor
                 JavascriptExecutor executor = (JavascriptExecutor) driver;
                 executor.executeScript("arguments[0].scrollIntoView(true);", search);
+                // Click on the element
                 search.click();
+                // Wait for some time to let the search results load
                 Thread.sleep(3500);
-                if(isElementDisplay(searchData)) {
+                // Check if search data is displayed
+                if (isElementDisplay(searchData)) {
                     return this;
-
                 }
-            } catch (Exception e ) {
-                System.out.println("Element not found or stale. Retrying click on search button..."+ e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Element not found or stale. Retrying click on search button..." + e.getMessage());
+                // Handle the retry by navigating and preparing the page again
                 navigateToSpendingOrderPage();
                 clickOnSearchTab();
-                scrollDownForSearch();            }
+                scrollDownForSearch();
+            }
         }
+        // Throw an exception if all attempts fail
         throw new RuntimeException("Failed to click on search btn after all attempts");
     }
+
     private void retryClickOnSearchBtn() throws InterruptedException {
         // Refresh the page
         driver.navigate().refresh();
