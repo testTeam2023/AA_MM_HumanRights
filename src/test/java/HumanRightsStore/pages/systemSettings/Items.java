@@ -237,8 +237,7 @@ public class Items {
     }
     public Items scrollDownForSearch()throws InterruptedException{
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,250);");
-        Thread.sleep(1000);
+        js.executeScript("window.scrollBy(0,150);");
 
         return this;
     }

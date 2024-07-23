@@ -299,7 +299,7 @@ public class SpendingOrderPage {
     }
     // Search Function
     private final By  searchTab = By.xpath("//a[@id=\"AnchorfirstTab\"]");
-    private final By  searchBtn = By.xpath("//input[@value=\"بـحـث\"]");
+    private final By  searchBtn = By.xpath("//*[@id=\"FormSearch\"]/div[1]/div[9]/input");
     private final By  searchData = By.xpath("//table[@id=\"tblDataTableClient\"]/tbody");
 
     public SpendingOrderPage clickOnSearchTab()throws InterruptedException{
@@ -337,7 +337,10 @@ public class SpendingOrderPage {
                 executor.executeScript("arguments[0].scrollIntoView(true);", search);
                 search.click();
                 Thread.sleep(3500);
-                return this;
+                if(isElementDisplay(searchData)) {
+                    return this;
+
+                }
             } catch (Exception e ) {
                 System.out.println("Element not found or stale. Retrying click on search button..."+ e.getMessage());
                 navigateToSpendingOrderPage();
@@ -372,7 +375,7 @@ public class SpendingOrderPage {
 
     // Edit function
 
-    private final By  editBtnParent = By.xpath("/html/body/div[6]/div/div[2]/div/div[1]/form/div[2]/table/tbody/tr[1]/td[11]");
+    private final By  editBtnParent = By.xpath("//*[@id=\"tblDataTableClient\"]/tbody/tr[1]/td[11]");
     private final By  editBtnChild = By.tagName("a");
     private final By  editBtn = By.xpath("//*[@id=\"btnSave\" and contains(@value,\"تعديل\")]");
     private final By deleteSuccessMessage = By.xpath("//*[@id=\"div-success-modal\"]//div[contains(text(),\"تم الحذف بنجاح\")]");
