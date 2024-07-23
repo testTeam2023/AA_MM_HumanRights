@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Selenium Tests and Generate Report
         run: |
-          mvn clean test -Dtest=SpendingOrderPageTest -Denvironment=ip
+          mvn clean test -Denvironment=ip
         continue-on-error: true
 
       - name: Archive artifacts
