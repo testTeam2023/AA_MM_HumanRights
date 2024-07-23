@@ -21,7 +21,7 @@ jobs:
 
       - name: Set up Chrome browser
         uses: browser-actions/setup-chrome@latest
-        
+
       - name: Run Selenium Tests and Generate Report
         run: |
           mvn clean test -Dtest=SpendingOrderPageTest -Denvironment=ip

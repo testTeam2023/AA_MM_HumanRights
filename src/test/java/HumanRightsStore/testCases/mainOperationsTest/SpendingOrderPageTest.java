@@ -32,6 +32,7 @@ public class SpendingOrderPageTest extends TestBase {
                 .selectReceiver(receiverName)
                 .scrollDown()
                 .addItem(itemNumber,ItemQty)
+                .scrollDownForSearch()
                 .clickOnSaveBtn()
                 .clickOnFixedBtn();
         softAssert.assertTrue(spendingOrderPage.fixedBtnDisable());

@@ -203,10 +203,7 @@ public class SpendingOrderPage {
 
                 WebElement add = waitForClickableElement(addBtn);
                 add.click();
-                Thread.sleep(1500);
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("window.scrollBy(0,350);");
-
+                Thread.sleep(4000);
                 return this;
             }
             catch (Exception e){
