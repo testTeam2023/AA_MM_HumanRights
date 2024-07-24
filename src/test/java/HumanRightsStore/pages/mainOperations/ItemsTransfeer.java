@@ -301,7 +301,10 @@ public class ItemsTransfeer {
                 JavascriptExecutor js = (JavascriptExecutor) driver;
                 js.executeScript("window.scrollBy(0, 200);");
                 Thread.sleep(2500);
-                return this;
+
+                if (isElementDisplay(searchData)) {
+                    return this;
+                }
             } catch (Exception e) {
                 // Refresh the page
                 System.out.println("Page refreshed. Retrying click on search btn...");
@@ -359,8 +362,8 @@ public class ItemsTransfeer {
 
     }
     public ItemsTransfeer scrollToTheEnd(){
-        Actions actions = new Actions(driver);
-        actions.scrollToElement(driver.findElement(notFixed));
+        JavascriptExecutor js = (JavascriptExecutor) driver ;
+        js.executeScript("window.scrollBy(0,500);");
         return this ;
     }
 

@@ -38,14 +38,13 @@ public class ItemsTransfeerTest extends TestBase {
         itemsTransfeer
                 .navigateToItemsTransferPage()
                 .clickOnSearchTab()
-                .scrollDown()
+               // .scrollDown()
                 .clickOnSearchBtn();
-        softAssert.assertTrue(itemsTransfeer.searchResultIsDisplayed());
 //Edit
         itemsTransfeer
                 .navigateToItemsTransferPage()
                 .clickOnSearchTab()
-                .scrollDown()
+                //.scrollDown()
                 .clickOnSearchBtn()
                 .clickOnEditBtn()
                 .scrollToTheEnd()
@@ -55,7 +54,7 @@ public class ItemsTransfeerTest extends TestBase {
         itemsTransfeer
                 .navigateToItemsTransferPage()
                 .clickOnSearchTab()
-                .scrollDown()
+                //.scrollDown()
                 .clickOnSearchBtn()
                 .clickOnDeleteBtn();
     }
