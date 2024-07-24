@@ -331,6 +331,10 @@ public class Items {
     public Items clickOnDeleteBtn() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(editBtnParent));
         WebElement parent = driver.findElement(editBtnParent);
+
+        // Scroll the element into view
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", parent);
+
         List<WebElement> child = parent.findElements(editBtnChild);
         child.get(1).click();
         try {
