@@ -40,8 +40,6 @@ public class ItemsTest extends TestBase {
                 .scrollDownForSearch()
                 .clickOnSearchBtn()
                 .clickOnEditBtn()
-                .scroll()
-                .enterMaxQty()
                 .scrollDown()
                 .clickOnEditSaveBtn();
     }

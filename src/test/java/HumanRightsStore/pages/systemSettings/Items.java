@@ -257,7 +257,8 @@ public class Items {
 
     //Edit and Delete Function
     private final By  editBtnParent = By.xpath("//table[@id=\"tblDataTableClient\"]/tbody/tr[1]/td[8]");
-    private final By  editBtnChild = By.tagName("a");
+    private final By  editBtnChild = By.xpath(".//a[contains(@class, 'btn btn-warning btn-xs ')]");
+    private final By  DeleteBtnChild = By.xpath(".//a[contains(@class, 'btn-danger')]");
     private final By editMaxQty = By.xpath("//input[@id=\"MaxQntyForRequest\"]");
     private final By  editBtn = By.xpath("//input[@id=\"btnSave\"]");
     private final By deleteSuccessMessage = By.xpath("//*[@id=\"div-success-modal\"]//div[contains(text(),\"تم الحذف بنجاح\")]");
@@ -269,10 +270,8 @@ public class Items {
         for (int retry = 0; retry < maxRetry; retry++){
             try {
                 WebElement parent = waitForVisibilityElement(editBtnParent);
-                List<WebElement> child = parent.findElements(editBtnChild);
-                WebElement elemnt = child.get(0);
-
-                wait.until(ExpectedConditions.elementToBeClickable(elemnt)).click();
+                WebElement child = parent.findElement(editBtnChild);
+               child.click();
 
                 Thread.sleep(3000);
 
@@ -300,7 +299,7 @@ public class Items {
     }
     public Items scrollDown(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,500);");
+        js.executeScript("window.scrollBy(0,850);");
        return this ;
     }
     public Items clickOnEditSaveBtn() throws InterruptedException{
@@ -321,7 +320,7 @@ public class Items {
                 clickOnSearchTab();
                 clickOnSearchBtn();
                 clickOnEditBtn();
-                editMaxQty();
+                scrollDown();
             }
         }
         throw new RuntimeException(" failed to click on save btn after "+maxAttempt+ " attempt");
@@ -329,11 +328,34 @@ public class Items {
     }
 
     public Items clickOnDeleteBtn() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(editBtnParent));
-        WebElement parent = driver.findElement(editBtnParent);
 
-        // Scroll the element into view
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", parent);
+        try {
+            // Wait for the parent element (td containing the delete button) to be visible
+            wait.until(ExpectedConditions.visibilityOfElementLocated(editBtnParent));
+            WebElement parent = driver.findElement(editBtnParent);
+
+            // Find the delete button and click it
+            WebElement deleteBtn = parent.findElement(DeleteBtnChild);
+            deleteBtn.click();
+
+            // Handle alert if present
+            wait.until(ExpectedConditions.alertIsPresent());
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+            Thread.sleep(2000);
+
+            // Wait for OK button to be clickable and click
+            wait.until(ExpectedConditions.elementToBeClickable(okBtn)).click();
+            Thread.sleep(2000);
+        } catch (TimeoutException e) {
+            System.out.println("Element not found within the time frame: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("الصنف مستخدم في احدي العمليات الاساسية لذلك لا يمكن الحذف");
+        }
+        return this;
+    }
+      /*  wait.until(ExpectedConditions.visibilityOfElementLocated(editBtnParent));
+        WebElement parent = driver.findElement(editBtnParent);
 
         List<WebElement> child = parent.findElements(editBtnChild);
         child.get(1).click();
@@ -344,11 +366,13 @@ public class Items {
             Thread.sleep(2000);
             wait.until(ExpectedConditions.elementToBeClickable(okBtn)).click();
             Thread.sleep(2000);
-        } catch (Exception e) {
-            System.out.println("الصنف مستخدم في احدي العمليات الاساسية لذلك لا يمكن الحذف");
+        } catch (Exception e ) {
+            System.out.println("الصنف مستخدم في احدي العمليات الاساسية لذلك لا يمكن الحذف"+ e.getMessage());
         }
         return this;
     }
+
+       */
     public boolean getDeleteSuccessMessage() {
         int maxAttempt = 3;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
