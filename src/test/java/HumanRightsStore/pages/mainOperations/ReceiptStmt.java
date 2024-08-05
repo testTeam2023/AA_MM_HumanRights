@@ -156,7 +156,7 @@ public class ReceiptStmt {
     public ReceiptStmt scrollDownTo() {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,150);");
+        js.executeScript("window.scrollBy(0,250);");
 
         return this;
     }
@@ -337,17 +337,14 @@ public class ReceiptStmt {
                 WebElement search= wait.until(ExpectedConditions.elementToBeClickable(searchBtn));
                 Actions actions = new Actions(driver);
                 actions.moveToElement(search).click().build().perform();
-
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("window.scrollBy(0, 250);");
                 Thread.sleep(2500);
                 return this;
             } catch (Exception e) {
                 // Refresh the page
-                System.out.println("Page refreshed. Retrying click on search btn...");
-                driver.navigate().refresh();
-                Thread.sleep(2500);
+                System.out.println("Page refreshed. Retrying click on search btn..."+ e.getMessage());
+                navigateToReceiptStmtPage();
                 clickOnSearchTab();
+                scrollDownTo();
             }
         }
         // If max attempts reached without success, throw a custom exception

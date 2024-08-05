@@ -44,7 +44,6 @@ public class ReceiptStmtTest extends TestBase {
                 .navigateToReceiptStmtPage()
                 .clickOnSearchTab()
                 .scrollDownTo()
-
                 .clickOnSearchBtn()
                 .clickOnEditBtn()
                 .scrollToTheEnd()
