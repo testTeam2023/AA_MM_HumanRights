@@ -181,6 +181,7 @@ public class ReceiptMemoPage {
     private final By fixed = By.xpath("//input[@id=\"btnFixing\"]");
     private final By notFixed = By.xpath("//input[@id=\"btnCancelFixed\"]");
     private final By itemNoBtns = By.xpath("/html/body/div[6]/div/div[2]/div/div[2]/div[2]/div[2]/div[1]/form/div[1]/div/label[4]");
+    private final By errorModal = By.xpath("//*[@id=\"div-error-modal\"]/div/div/div[3]");
 
     public ReceiptMemoPage addItems(String itemNum, String qty, String price) throws InterruptedException {
 
@@ -230,12 +231,16 @@ public class ReceiptMemoPage {
                 //Actions actions = new Actions(driver);
                 // actions.moveToElement(saveButton).click().build().perform();
                 Thread.sleep(1500);
+                if (isElementDisplay(errorModal)){
+                    throw new RuntimeException("صيغة التاريخ خطأ\n");
+                }
 
                 WebElement okButton = waitForClickableElement(okBtn);
                 okButton.click();
                 //Actions actions1 = new Actions(driver);
                 //actions1.moveToElement(okButton).click().build().perform();
                 Thread.sleep(1500);
+
                 return this;
             }
             catch (Exception e){

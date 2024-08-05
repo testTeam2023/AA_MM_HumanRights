@@ -24,7 +24,7 @@ public class ReturnSpendingOrderTest extends TestBase {
         returnSpendingOrder
                 .navigateToReturnSpendingOrderPage()
                 .selectStoreName()
-                .selectStoreKeeper(storeKeeper)
+                //.selectStoreKeeper(storeKeeper)
                 .selectDepartment(departmentName)
                 .selectReceiverName(receiverNumber)
                 .scrollDown()
