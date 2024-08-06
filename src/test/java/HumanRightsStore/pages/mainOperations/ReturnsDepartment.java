@@ -78,6 +78,7 @@ public class ReturnsDepartment {
 
     private final By selectDepartmentManger = By.xpath("//*[@id=\"select2-CuratorManagerID-container\"]");
     private final By searchDepartmentMangerField = By.xpath("//*[@class=\"select2-search select2-search--dropdown\"]//input");
+    private final By qtyReturns = By.xpath("/html/body/div[6]/div/div[2]/div/div[2]/div[2]/div[2]/div[2]/table/tbody/tr/td[5]/input");
 
     public ReturnsDepartment selectReturnType(String returnTypes ) throws InterruptedException {
         int maxAttempt = 5;
@@ -197,7 +198,7 @@ public class ReturnsDepartment {
     }
     public ReturnsDepartment scrollDown(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,550);");
+        js.executeScript("window.scrollBy(0,900);");
         return this ;
     }
     public ReturnsDepartment scrollDownc(){
@@ -225,11 +226,14 @@ public class ReturnsDepartment {
                 WebElement qty = waitForClickableElement(itemQty);
                 qty.clear();
                 qty.sendKeys(itemqtys);
+                Thread.sleep(1000);
                 WebElement add = waitForClickableElement(addBtn);
                 add.click();
                 Thread.sleep(3000);
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("window.scrollBy(0,350);");
+
+                WebElement qtyReturn = waitForClickableElement(qtyReturns);
+                qtyReturn.clear();
+                qtyReturn.sendKeys("1");
                 return this;
             }
             catch (Exception e){
@@ -296,7 +300,7 @@ public class ReturnsDepartment {
 
         WebElement fixedButton = waitForClickableElement(fixed);
         fixedButton.click();
-        Thread.sleep(1500);
+        Thread.sleep(2000);
 
         WebElement okButton = waitForClickableElement(okBtn);
         okButton.click();
