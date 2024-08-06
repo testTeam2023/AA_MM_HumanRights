@@ -131,8 +131,7 @@ public class Contract {
                 return this;
             } catch (Exception e) {
                 System.out.println("Retrying  selecting PurQuoteNumber");
-                driver.navigate().refresh();
-                Thread.sleep(2000);
+                navigateToContractPage();
             }
         }
         throw new RuntimeException("failed selecting PurQuoteNumber after " + maxAttempt + "Attempt");
@@ -146,16 +145,16 @@ public class Contract {
                 WebElement store = waitForClickableElement(selectSuppliers1);
                 Actions actions = new Actions(driver);
                 actions.moveToElement(store).click().build().perform();
-                Thread.sleep(1000);
+                Thread.sleep(1500);
 
-                waitForPresenceElement(selectSuppliersParent);
+                waitForClickableElement(selectSuppliersParent);
                 WebElement parent = driver.findElement(selectSuppliersParent);
                 List<WebElement> childs= parent.findElements(selectSuppliersChild);
                 childs.get(1).click();
-
+                Thread.sleep(1500);
                 return this;
             } catch (Exception e) {
-                System.out.println("Retrying  selecting supplier 1");
+                System.out.println("Retrying  selecting supplier 1"+ e.getMessage());
             }
         }
         throw new RuntimeException("failed selecting supplier 1 after " +maxAttempt);

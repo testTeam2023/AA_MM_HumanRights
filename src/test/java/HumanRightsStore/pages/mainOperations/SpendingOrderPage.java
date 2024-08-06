@@ -297,7 +297,7 @@ public class SpendingOrderPage {
     }
     // Search Function
     private final By  searchTab = By.xpath("//a[@id=\"AnchorfirstTab\"]");
-    private final By  searchBtn = By.xpath("//input[@class=\" btn-info btn-3d btn \" and contains(@value,\"بـحـث\")]");
+    private final By  searchBtn = By.xpath("//*[@id=\"FormSearch\"]/div[1]/div[9]/input");
     private final By  searchData = By.xpath("//table[@id=\"tblDataTableClient\"]/tbody");
 
     public SpendingOrderPage clickOnSearchTab()throws InterruptedException{
