@@ -148,7 +148,7 @@ public class ItemsTransfeer {
     }
     public ItemsTransfeer scrollDown(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,300);");
+        js.executeScript("window.scrollBy(0,550);");
         return this ;
     }
 
@@ -168,14 +168,14 @@ public class ItemsTransfeer {
 
         WebElement itemNum= waitForClickableElement(itemNumber);
         itemNum.sendKeys(itemNumbers,Keys.ENTER);
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         WebElement qty = waitForClickableElement(transferQty);
         qty.clear();
         qty.sendKeys(transQty);
+        Thread.sleep(1500);
         WebElement itemsAdd= waitForClickableElement(addBtn);
         itemsAdd.click();
-        JavascriptExecutor js = (JavascriptExecutor) driver ;
-        js.executeScript("window.scrollBy(0,350);") ;
+
         Thread.sleep(2500);
         return this ;
     }
