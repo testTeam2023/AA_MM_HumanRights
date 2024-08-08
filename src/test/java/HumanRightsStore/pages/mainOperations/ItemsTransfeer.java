@@ -52,7 +52,7 @@ public class ItemsTransfeer {
                 System.out.println("Page refreshed. Retrying navigate to Items transfer page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out after" + maxAttempt);
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues " + maxAttempt+ "attempts");
     }
     private boolean isElementDisplay(By locator){
         try {

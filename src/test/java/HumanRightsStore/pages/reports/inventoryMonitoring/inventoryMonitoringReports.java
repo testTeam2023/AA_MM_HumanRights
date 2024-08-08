@@ -37,7 +37,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report20 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport21Page() {
         int maxAttempt = 3;
@@ -51,7 +51,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report21 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport22Page() {
         int maxAttempt = 3;
@@ -65,7 +65,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report22 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport23Page() {
         int maxAttempt = 3;
@@ -79,7 +79,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report23 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport24Page() {
         int maxAttempt = 3;
@@ -93,7 +93,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report24 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport30Page() {
         int maxAttempt = 3;
@@ -107,7 +107,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report30 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport31Page() {
         int maxAttempt = 3;
@@ -121,7 +121,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report31 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport42Page() {
         int maxAttempt = 3;
@@ -135,7 +135,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report42 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport43Page() {
         int maxAttempt = 3;
@@ -149,7 +149,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report43 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport65Page() {
         int maxAttempt = 3;
@@ -163,7 +163,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report65 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport74Page() {
         int maxAttempt = 3;
@@ -177,7 +177,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report74 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport73Page() {
         int maxAttempt = 3;
@@ -191,7 +191,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report73 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport66Page() {
         int maxAttempt = 3;
@@ -205,7 +205,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report66 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport67Page() {
         int maxAttempt = 3;
@@ -219,7 +219,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report67 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport86Page() {
         int maxAttempt = 3;
@@ -233,7 +233,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report86 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport85Page() {
         int maxAttempt = 3;
@@ -247,7 +247,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report85 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport84Page() {
         int maxAttempt = 3;
@@ -261,7 +261,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report84 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public inventoryMonitoringReports navigateToReport82Page() {
         int maxAttempt = 3;
@@ -275,7 +275,7 @@ public class inventoryMonitoringReports {
                 System.out.println("Page refreshed. Retrying navigate to Report82 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
 
 

@@ -37,7 +37,7 @@ public class ProcurementReports {
                 System.out.println("Page refreshed. Retrying navigate to Report25 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public ProcurementReports navigateToReport26Page() {
         int maxAttempt = 3;
@@ -51,7 +51,7 @@ public class ProcurementReports {
                 System.out.println("Page refreshed. Retrying navigate to Report26 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public ProcurementReports navigateToReport27Page() {
         int maxAttempt = 3;
@@ -65,7 +65,7 @@ public class ProcurementReports {
                 System.out.println("Page refreshed. Retrying navigate to Report27 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public ProcurementReports navigateToReport28Page() {
         int maxAttempt = 3;
@@ -79,7 +79,7 @@ public class ProcurementReports {
                 System.out.println("Page refreshed. Retrying navigate to Report28 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public ProcurementReports navigateToReport29Page() {
         int maxAttempt = 3;
@@ -93,7 +93,7 @@ public class ProcurementReports {
                 System.out.println("Page refreshed. Retrying navigate to Report29 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public ProcurementReports navigateToReport68Page() {
         int maxAttempt = 3;
@@ -107,7 +107,7 @@ public class ProcurementReports {
                 System.out.println("Page refreshed. Retrying navigate to Report68 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
 
 

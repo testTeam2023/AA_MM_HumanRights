@@ -37,7 +37,7 @@ public class SpecialReports {
                 System.out.println("Page refreshed. Retrying navigate to Report80 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public SpecialReports navigateToReport81Page() {
         int maxAttempt = 3;
@@ -51,7 +51,7 @@ public class SpecialReports {
                 System.out.println("Page refreshed. Retrying navigate to Report81 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public SpecialReports navigateToReport89Page() {
         int maxAttempt = 3;
@@ -65,7 +65,7 @@ public class SpecialReports {
                 System.out.println("Page refreshed. Retrying navigate to Report89 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public SpecialReports navigateToReport90Page() {
         int maxAttempt = 3;
@@ -79,7 +79,7 @@ public class SpecialReports {
                 System.out.println("Page refreshed. Retrying navigate to Report90 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
     public SpecialReports navigateToReport91Page() {
         int maxAttempt = 3;
@@ -93,7 +93,7 @@ public class SpecialReports {
                 System.out.println("Page refreshed. Retrying navigate to Report91 page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out or Publish Issues after " + maxAttempt + " attempts");
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " + maxAttempt + " attempts");
     }
 
 

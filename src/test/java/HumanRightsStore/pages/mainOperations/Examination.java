@@ -48,7 +48,7 @@ public class Examination {
                 System.out.println("Page refreshed. Retrying navigate to examination page url ...");
             }
         }
-        throw new RuntimeException("page load Times Out after" +maxAttempt);
+        throw new RuntimeException("page load Times Out (Server Stopped ) or Publish Issues after " +maxAttempt);
     }
     private boolean isElementDisplay(By locator){
         try {
