@@ -72,7 +72,7 @@ public class Transform {
 
     private final By employeeFrom = By.xpath("//*[@id=\"CuratorIDFrom\"]");
     private final By employeeTo= By.xpath("//*[@id=\"CuratorIDTo\"]");
-    private final By selectItemBtn= By.xpath("/html/body/div[6]/div/div[2]/div/div[2]/div[2]/div[1]/div[2]/form/table/tbody/tr[1]/td[8]/input");
+    private final By selectItemBtn= By.xpath("//*[@id=\"Slected_11724\"]");
     private final By saveBtn = By.xpath("//*[@id=\"btnSave\" and contains(@value,\"حفظ\")]");
     private final By okBtn = By.xpath("//button[@id=\"btn-ok-modal\"]");
     private final By successMessage = By.xpath("//div[@id=\"div-success-modal\"]//div[contains(text(),\"تم الحفظ بنجاح\")]");
@@ -153,6 +153,7 @@ public class Transform {
             try {
                 WebElement item = waitForClickableElement(selectItemBtn);
                 item.click();
+                Thread.sleep(1500);
                 return this;
             } catch (Exception e) {
                 System.out.println("Retrying  selecting itemsBtn");
@@ -173,19 +174,26 @@ public class Transform {
         return this ;
     }
     public Transform clickOnSaveBtn() throws InterruptedException{
-        WebElement saveButton = waitForClickableElement(saveBtn);
-        saveButton.click();
-        Thread.sleep(1500);
+        int maxAttempt = 5;
 
-        WebElement okButton = waitForClickableElement(okBtn);
-        okButton.click();
+        for (int attempt = 0; attempt < maxAttempt; attempt++) {
+            try {
+                WebElement saveButton = waitForClickableElement(saveBtn);
+                saveButton.click();
+                Thread.sleep(1500);
 
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(getSuccessMessage());
-        Thread.sleep(1500);
+                // If the click is successful, break out of the loop
+                WebElement okButton = waitForClickableElement(okBtn);
+                okButton.click();
+                Thread.sleep(1500);
+                return this;
+            } catch (Exception e) {
+                System.out.println("Attempt " + (attempt + 1) + ": Retrying click on save button." + e.getMessage());
+            }
+        }
 
-
-        return this;
+        // If we reach here, all attempts have failed
+        throw new RuntimeException("Failed to click on save button after " + maxAttempt + " attempts.");
     }
 
     public boolean getSuccessMessage() {
@@ -271,15 +279,14 @@ public class Transform {
                 WebElement search =wait.until(ExpectedConditions.elementToBeClickable(searchBtn));
                 Actions actions = new Actions(driver);
                 actions.moveToElement(search).click().build().perform();
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("window.scrollBy(0, 150);");
-                Thread.sleep(2000);
-                return this;
+                if (isElementDisplay(searchData)){
+                    return this;
+                }
+
             } catch (Exception e) {
                 // Refresh the page
                 System.out.println("Page refreshed. Retrying click on search btn...");
-                driver.navigate().refresh();
-                Thread.sleep(2500);
+                navigateToTransformPage();
                 clickOnSearchTab();
             }
         }

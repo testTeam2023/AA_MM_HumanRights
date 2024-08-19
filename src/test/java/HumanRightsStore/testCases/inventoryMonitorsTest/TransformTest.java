@@ -39,7 +39,6 @@ public class TransformTest extends TestBase {
                 .clickOnSearchTab()
                 .scrollDown()
                 .clickOnSearchBtn();
-        softAssert.assertTrue(transform.searchResultIsDisplayed());
 //Edit
         transform
                 .navigateToTransformPage()
