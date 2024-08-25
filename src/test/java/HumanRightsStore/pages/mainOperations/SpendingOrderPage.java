@@ -379,7 +379,8 @@ public class SpendingOrderPage {
     // Edit function
 
     private final By  editBtnParent = By.xpath("//*[@id=\"tblDataTableClient\"]/tbody/tr[1]/td[11]");
-    private final By  editBtnChild = By.tagName("a");
+    private final By  editBtnChild = By.xpath(".//a[@class=\"btn btn-warning btn-xs\"]");
+    private final By  DeleteBtnChild = By.xpath(".//a[@class=\"btn btn-danger btn-xs\"]");
     private final By  editBtn = By.xpath("//*[@id=\"btnSave\" and contains(@value,\"تعديل\")]");
     private final By deleteSuccessMessage = By.xpath("//*[@id=\"div-success-modal\"]//div[contains(text(),\"تم الحذف بنجاح\")]");
 
@@ -390,10 +391,8 @@ public class SpendingOrderPage {
             try {
                 WebElement parent = waitForClickableElement(editBtnParent);
 
-                List<WebElement> child = parent.findElements(editBtnChild);
-                WebElement elemnt =  wait.until(ExpectedConditions.elementToBeClickable(child.get(0)));
-                elemnt.click();
-
+                WebElement child = parent.findElement(editBtnChild);
+                child.click();
                 Thread.sleep(3000);
 
                 return this;
@@ -437,10 +436,8 @@ public class SpendingOrderPage {
             try {
 
                 WebElement parent = waitForVisibilityElement(editBtnParent);
-
-                List<WebElement> child = parent.findElements(editBtnChild);
-                WebElement elemnt =  wait.until(ExpectedConditions.elementToBeClickable(child.get(1)));
-                elemnt.click();
+                WebElement child = parent.findElement(DeleteBtnChild);
+                child.click();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
