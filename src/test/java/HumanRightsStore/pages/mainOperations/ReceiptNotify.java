@@ -221,16 +221,14 @@ public class ReceiptNotify  {
                 WebElement search= wait.until(ExpectedConditions.elementToBeClickable(searchBtn));
                 Actions actions = new Actions(driver);
                 actions.moveToElement(search).click().build().perform();
-
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("window.scrollBy(0, 200);");
                 Thread.sleep(2500);
-                return this;
+                if (isElementDisplay(searchData)) {
+                    return this;
+                }
             } catch (Exception e) {
                 // Refresh the page
                 System.out.println("Page refreshed. Retrying click on search btn...");
-                driver.navigate().refresh();
-                Thread.sleep(2500);
+                navigateToReceiptNotifyPage();
                 clickOnSearchTab();
             }
         }

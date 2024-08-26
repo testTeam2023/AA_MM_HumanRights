@@ -1,11 +1,14 @@
 package HumanRightsStore.pages.systemSettings;
 
+import HumanRightsStore.pages.mainOperations.SpendingOrderPage;
 import HumanRightsStore.utils.ConfigUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.asserts.SoftAssert;
 
 
@@ -207,8 +210,11 @@ public class Items {
             throw new RuntimeException("Failed to click on search tab after " + maxAttempt + " attempts");
 
     }
+
+    private static final Logger logger = LoggerFactory.getLogger(Items.class);
+
     public Items clickOnSearchBtn() throws InterruptedException{
-        int maxAttempt = 3;
+      /*  int maxAttempt = 3;
         for (int attempt = 0; attempt < maxAttempt; attempt++) {
             try {
                 WebElement search= wait.until(ExpectedConditions.elementToBeClickable(searchBtn));
@@ -232,6 +238,51 @@ public class Items {
         // If max attempts reached without success, throw a custom exception
         throw new RuntimeException("Failed to click on search button after " + maxAttempt + " attempts");
     }
+
+       */
+
+        int maxAttempts = 10;
+        int attempt = 0;
+
+        while (attempt < maxAttempts) {
+            try {
+                // Wait until the search button is clickable
+                WebElement search = wait.until(ExpectedConditions.elementToBeClickable(searchBtn));
+
+                // Scroll into view and click the search button
+                JavascriptExecutor executor = (JavascriptExecutor) driver;
+                executor.executeScript("arguments[0].scrollIntoView(true);", search);
+                search.click();
+                Thread.sleep(2000);
+                // Optional: Wait dynamically for search results to display
+                wait.until(ExpectedConditions.visibilityOfElementLocated(searchData));
+
+                return this; // Successful click
+
+            } catch (NoSuchElementException | StaleElementReferenceException e) {
+                logger.error("Element issue on attempt " + (attempt + 1) + ": ", e);
+                handleNavigationAndRetry();
+            } catch (Exception e) {
+                logger.error("Unexpected error on attempt " + (attempt + 1) + ": ", e);
+                handleNavigationAndRetry();
+            }
+
+            attempt++;
+        }
+
+        throw new RuntimeException("Failed to click on search button after " + maxAttempts + " attempts.");
+    }
+    private void handleNavigationAndRetry() {
+        try {
+            navigateToItemsPage();
+            clickOnSearchTab();
+            scrollDownForSearch();
+        } catch (Exception e) {
+            logger.error("Error during navigation and retry: ", e);
+            throw new RuntimeException("Navigation failed during retry attempt", e);
+        }
+    }
+
     public Items scrollDownForSearch()throws InterruptedException{
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,180);");

@@ -5,6 +5,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.List;
@@ -323,8 +325,10 @@ public class SpendingOrderPage {
         throw new RuntimeException("Failed to click on search tab after " + maxAttempt + " attempts");
 
     }
+    private static final Logger logger = LoggerFactory.getLogger(SpendingOrderPage.class);
+
     public SpendingOrderPage clickOnSearchBtn() throws InterruptedException {
-        int maxAttempts = 10;
+   /*     int maxAttempts = 10;
         for (int attempt = 0; attempt < maxAttempts; attempt++) {
             try {
                 // Locate the element inside the loop to avoid stale element references
@@ -352,13 +356,39 @@ public class SpendingOrderPage {
         throw new RuntimeException("Failed to click on search btn after all attempts");
     }
 
-    private void retryClickOnSearchBtn() throws InterruptedException {
-        // Refresh the page
-        driver.navigate().refresh();
-        Thread.sleep(3500);
-        clickOnSearchTab();
-        scrollDownForSearch();
+    */
+        int maxAttempts = 10;
+        int attempt = 0;
+
+        while (attempt < maxAttempts) {
+            try {
+                WebElement search = wait.until(ExpectedConditions.visibilityOfElementLocated(searchBtn));
+                JavascriptExecutor executor = (JavascriptExecutor) driver;
+                executor.executeScript("arguments[0].scrollIntoView(true);", search);
+                search.click();
+                Thread.sleep(2000); // Wait before retrying
+                // Wait for search results to display
+                wait.until(ExpectedConditions.visibilityOfElementLocated(searchData));
+
+                return this; // Successful click
+
+            } catch (NoSuchElementException | StaleElementReferenceException e) {
+                logger.error("Element issue: ", e);
+                handleNavigationAndRetry();
+            } catch (Exception e) {
+                logger.error("Unexpected error: ", e);
+                handleNavigationAndRetry();
+            }
+            attempt++;
+        }
+
+        throw new RuntimeException("Failed to click on search button after " + maxAttempts + " attempts.");
     }
+        private void handleNavigationAndRetry() throws InterruptedException{
+            navigateToSpendingOrderPage();
+            clickOnSearchTab();
+            scrollDownForSearch();
+        }
     public boolean searchResultIsDisplayed() throws InterruptedException{
         int maxRetry = 3;
         for (int retry = 0; retry < maxRetry; retry++){

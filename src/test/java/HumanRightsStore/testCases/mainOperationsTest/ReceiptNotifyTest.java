@@ -44,8 +44,6 @@ public class ReceiptNotifyTest extends TestBase {
                 .clickOnSearchTab()
                 .clickOnSearchBtn();
 
-        Assert.assertTrue(receiptNotify.searchResultIsDisplayed());
-
         // Edit
         receiptNotify
                 .navigateToReceiptNotifyPage()

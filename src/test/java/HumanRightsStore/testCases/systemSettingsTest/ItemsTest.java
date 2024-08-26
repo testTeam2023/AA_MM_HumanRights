@@ -28,7 +28,6 @@ public class ItemsTest extends TestBase {
              .clickOnSearchTab()
              .scrollDownForSearch()
              .clickOnSearchBtn();
-     Assert.assertTrue(items.searchResultIsDisplayed());
     }
 
     @Test(priority = 2)
