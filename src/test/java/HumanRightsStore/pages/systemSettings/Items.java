@@ -218,15 +218,12 @@ public class Items {
                 executor.executeScript("arguments[0].scrollIntoView(true);", search);
                 search.click();
 
-                JavascriptExecutor js = (JavascriptExecutor) driver;
-                js.executeScript("window.scrollBy(0,180);");
                 Thread.sleep(3500);
                 return this;
             } catch (Exception e) {
                 // Refresh the page
                 System.out.println("Page refreshed. Retrying click on search btn...");
-                driver.navigate().refresh();
-                Thread.sleep(3500);
+                navigateToItemsPage();
                 clickOnSearchTab();
                 scrollDownForSearch();
 
@@ -237,7 +234,7 @@ public class Items {
     }
     public Items scrollDownForSearch()throws InterruptedException{
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,150);");
+        js.executeScript("window.scrollBy(0,180);");
 
         return this;
     }

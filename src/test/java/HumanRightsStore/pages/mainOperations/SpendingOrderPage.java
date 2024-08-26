@@ -16,7 +16,7 @@ public class SpendingOrderPage {
     public SpendingOrderPage(WebDriver driver){
         this.driver = driver;
         this.wait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(30))
+                .withTimeout(Duration.ofSeconds(35))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class) ;
     }
@@ -389,11 +389,11 @@ public class SpendingOrderPage {
         int maxRetry = 5;
         for (int retry = 0; retry < maxRetry; retry++){
             try {
-                WebElement parent = waitForClickableElement(editBtnParent);
+                WebElement parent = waitForVisibilityElement(editBtnParent);
 
                 WebElement child = parent.findElement(editBtnChild);
-                child.click();
-                Thread.sleep(3000);
+                wait.until(ExpectedConditions.elementToBeClickable(child)).click();
+                Thread.sleep(1500);
 
                 return this;
             }
@@ -437,7 +437,8 @@ public class SpendingOrderPage {
 
                 WebElement parent = waitForVisibilityElement(editBtnParent);
                 WebElement child = parent.findElement(DeleteBtnChild);
-                child.click();
+                wait.until(ExpectedConditions.elementToBeClickable(child)).click();
+                Thread.sleep(1500);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
