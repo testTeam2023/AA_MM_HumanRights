@@ -318,6 +318,7 @@ public class ReturnsDepartment {
             } catch (Exception e) {
                 // General exception handling
                 System.out.println("An error occurred while clicking on buttons: " + e.getMessage());
+                retry++;
             }
         }
 

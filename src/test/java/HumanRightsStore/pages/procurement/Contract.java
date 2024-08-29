@@ -155,6 +155,9 @@ public class Contract {
                 return this;
             } catch (Exception e) {
                 System.out.println("Retrying  selecting supplier 1"+ e.getMessage());
+                navigateToContractPage();
+                selectTypeOfContract(true);
+                selectPurQuoteNumber();;
             }
         }
         throw new RuntimeException("failed selecting supplier 1 after " +maxAttempt);
