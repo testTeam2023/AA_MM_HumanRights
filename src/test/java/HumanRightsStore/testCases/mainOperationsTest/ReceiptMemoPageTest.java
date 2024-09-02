@@ -28,6 +28,7 @@ public class ReceiptMemoPageTest extends TestBase {
                 .selectEmployeeName()
                 .scrollDown()
                 .addItems(itemNumber,ItemQty,ItemPrice)
+                .scrollDownC()
                 .clickOnSaveBtn()
                 .clickOnFixedBtn() ;
         softAssert.assertTrue(receiptMemoPage.fixedBtnDisable());

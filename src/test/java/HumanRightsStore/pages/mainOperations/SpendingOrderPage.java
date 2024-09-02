@@ -422,8 +422,9 @@ public class SpendingOrderPage {
                 WebElement parent = waitForVisibilityElement(editBtnParent);
 
                 WebElement child = parent.findElement(editBtnChild);
-                wait.until(ExpectedConditions.elementToBeClickable(child)).click();
-                Thread.sleep(1500);
+                wait.until(ExpectedConditions.elementToBeClickable(child));
+                child.click();
+                Thread.sleep(2500);
 
                 return this;
             }

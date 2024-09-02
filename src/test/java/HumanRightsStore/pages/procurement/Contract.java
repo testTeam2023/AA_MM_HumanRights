@@ -1,6 +1,8 @@
 package HumanRightsStore.pages.procurement;
 
 import HumanRightsStore.utils.ConfigUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -382,18 +384,25 @@ public class Contract {
 
     }
 
+    private static final Logger logger = LogManager.getLogger(Contract.class);
 
-    public Contract clickOnEditSaveBtn() throws InterruptedException{
+    public Contract clickOnEditSaveBtn() throws InterruptedException {
+        logger.debug("Attempting to click on the edit button.");
         WebElement edit = waitForClickableElement(editBtn);
-        Actions actions =new Actions(driver);
+
+        logger.info("Edit button is clickable, proceeding with click action.");
+        Actions actions = new Actions(driver);
         actions.moveToElement(edit).click().build().perform();
 
-        Thread.sleep(1500);
+        Thread.sleep(2000);
 
+        logger.debug("Attempting to click on the OK button.");
         WebElement ok = waitForClickableElement(okBtn);
-        Actions actions1 =new Actions(driver);
-        actions.moveToElement(ok).click().build().perform();
-        return this;    }
+        ok.click();
+        logger.info("OK button clicked successfully.");
+
+        return this;
+    }
 
     public Contract clickOnDeleteBtn() throws InterruptedException {
         int maxRetry = 3;
